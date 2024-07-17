@@ -10,6 +10,10 @@ import { HeaderComponent } from './shared/header/header.component';
 import { ProductsPageComponent } from './products/pages/products-page/products-page.component';
 import { ProductPipe } from './products/pipes/product.pipe';
 import { ProductsListComponent } from './products/components/products-list/products-list.component';
+import { ProvaComponent } from './shared/prova/prova.component';
+import { OrdersPageComponent } from './orders/orders-page/orders-page.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { LoginComponent } from './home/login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { ProductsListComponent } from './products/components/products-list/produ
     HeaderComponent,
     ProductsPageComponent,
     ProductPipe,
-    ProductsListComponent
+    ProductsListComponent,
+    ProvaComponent,
+    OrdersPageComponent,
+    NotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

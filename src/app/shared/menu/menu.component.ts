@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { MenuService } from './menu.service';
+import { MenuItem } from './menu-item';
 @Component({
   selector: 'app-menu',
   template: `
@@ -11,18 +12,13 @@ import { Component } from '@angular/core';
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
+      @for(menuItem of menuItems; track menuItem) {
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" routerLink="{{menuItem.link}}" >
+            {{menuItem.label}}
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
+      }
       </ul>
     </div>
   </div>
@@ -30,6 +26,15 @@ import { Component } from '@angular/core';
   `,
   styles: ``
 })
-export class MenuComponent {
+export class MenuComponent implements OnInit  {
 
+  menuItems: MenuItem[] = [];
+
+  constructor(private menuService: MenuService) { 
+    console.log('MenuComponent constructor');
+    
+  }
+  ngOnInit(): void {
+    this.menuItems = this.menuService.getMenuItems();
+  }
 }

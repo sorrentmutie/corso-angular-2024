@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Product } from '../../models/product';
 
 @Component({
@@ -49,9 +49,17 @@ import { Product } from '../../models/product';
       border-radius: 50%;
     }`
 })
-export class ProductsListComponent {
+export class ProductsListComponent implements OnChanges {
     @Input() products: Product[] = [];
     @Output() deleteProduct = new EventEmitter<Product>();
+
+    constructor() {
+      console.log('ProductsListComponent constructor');
+    }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('ProductsListComponent ngOnChanges');
+    console.log(changes);
+  }
 
     delete(product: Product) {
         this.deleteProduct.emit(product);

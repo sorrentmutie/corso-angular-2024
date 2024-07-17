@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { ProductsService } from '../../products/services/products.service';
 
 @Component({
   selector: 'app-footer',
   template: `
     <div class="container-fluid" >
-      footer works!
+      footer works! {{productsService.getCatalog().length}}
     </div>
   `,
   styles: `
@@ -16,5 +17,9 @@ import { Component } from '@angular/core';
   `
 })
 export class FooterComponent {
-
+  numberOfProducts = 0;
+  constructor(public productsService: ProductsService) {
+    console.log('FooterComponent constructor');
+    //this.numberOfProducts = productsService.getCatalog().length; 
+  }
 }
