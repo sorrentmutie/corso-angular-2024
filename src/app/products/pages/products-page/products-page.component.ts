@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-products-page',
@@ -8,24 +9,20 @@ import { ProductsService } from '../../services/products.service';
 
   <button style="margin-top:10px" class="btn btn-success" (click)="addProduct()"> Aggiungi un prodotto </button>
 
-    @if(products.length > 0) {
+   // subscribe to products$ and use the async pipe
+    <section *ngIf="products$ | async as products">
       <article>
         Numero totale di prodotti: {{products.length}}
       </article>
       <app-products-list (deleteProduct)="removeProduct($event)" 
            [products]="products"></app-products-list>
-    }
-    @else {
-      <article>
-        Nessun prodotto presente
-      </article>
-    }
+    </section>
   `,
   styles: ``
 })
 export class ProductsPageComponent implements OnInit {
-  products: Product[] = [];
- 
+  products$: Observable<Product[]> | undefined = undefined
+
   constructor(private productsService: ProductsService) {
    }
 
@@ -39,7 +36,10 @@ export class ProductsPageComponent implements OnInit {
    
   ngOnInit(): void {
     console.log('ProductsPageComponent ngOnInit');
-    this.products = this.productsService.getCatalog();
+    this.products$ =  this.productsService.getCatalogAsync();
+
+    // const z = this.productsService.getCatalogAsync().subscribe(ps => {});
+
   }
 
   removeProduct(product: Product): void {

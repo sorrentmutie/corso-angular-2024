@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
 import { DiscountService } from './discount.service';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,11 @@ export class ProductsService {
   getCatalog(): Product[] { 
     return this.products;
   }
+
+  getCatalogAsync(): Observable<Product[]> {
+    return of(this.products);
+  }
+
 
   getOfferProducts(): Product[] {
     return this.offerProducts;
