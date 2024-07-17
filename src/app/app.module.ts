@@ -14,6 +14,8 @@ import { ProvaComponent } from './shared/prova/prova.component';
 import { OrdersPageComponent } from './orders/orders-page/orders-page.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { LoginComponent } from './home/login/login.component';
+import { ContactsPageComponent } from './contacts/contacts-page/contacts-page.component';
+import { OffersPageComponent } from './offers/offers-page/offers-page.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { LoginComponent } from './home/login/login.component';
     ProvaComponent,
     OrdersPageComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    ContactsPageComponent,
+    OffersPageComponent
   ],
   imports: [
     BrowserModule,

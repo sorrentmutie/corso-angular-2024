@@ -12,7 +12,9 @@ export class MenuService {
     return [
       { label: 'Home', link: '/home' },
       { label: 'Products', link: '/products' },
-      { label: 'Orders', link: '/orders' }
+      { label: 'Orders', link: '/orders' },
+      { label: 'Offers', link: '/offers' },
+      { label: 'Contacts', link: '/contacts'}
     ];
   }
 }

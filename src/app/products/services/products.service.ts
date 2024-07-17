@@ -28,6 +28,29 @@ export class ProductsService {
     return this.offerProducts;
   }
 
+  getBestOfferProduct(): Product | undefined{
+    let minPrice = 1000000;
+    let product : Product | undefined = undefined;
+    for(let i = 0; i < this.offerProducts.length; i++)
+    {
+      if(this.offerProducts[i].price < minPrice)
+      {
+        minPrice = this.offerProducts[i].price;
+        product = this.offerProducts[i];
+      }
+    }
+
+    return product;
+  }
+
+  removeProduct(product : Product) : void
+  {
+    this.products.splice(this.products.indexOf(product), 1);
+  }
+
+
+
+
   loadOfferProducts() {  
     this.offerProducts.push(
       { id: 4, name: 'Prodotto 4',  
@@ -41,7 +64,6 @@ export class ProductsService {
         imageUrl: "https://via.placeholder.com/250/00FFFF",
         date: new Date()
       }
-
     );
   }
 

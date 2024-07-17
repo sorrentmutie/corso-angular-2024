@@ -6,6 +6,8 @@ import { ProductsService } from '../../services/products.service';
   selector: 'app-products-page',
   template: `
 
+  <button style="margin-top:10px" class="btn btn-success" (click)="addProduct()"> Aggiungi un prodotto </button>
+
     @if(products.length > 0) {
       <article>
         Numero totale di prodotti: {{products.length}}
@@ -18,44 +20,29 @@ import { ProductsService } from '../../services/products.service';
         Nessun prodotto presente
       </article>
     }
-    <br/>
-
-    @if(offerProducts.length > 0) {
-      <h3>Prodotti in offerta</h3>
-    <app-products-list 
-      (deleteProduct)="removeOfferProduct($event)"
-      [products]="offerProducts">
-    </app-products-list>
-    }
-    @else {
-      <article>
-        Nessun prodotto in offerta
-      </article>
-    }
   `,
   styles: ``
 })
 export class ProductsPageComponent implements OnInit {
   products: Product[] = [];
-  offerProducts: Product[] = [];
-
+ 
   constructor(private productsService: ProductsService) {
-    console.log('ProductsPageComponent constructor');
+   }
 
+   addProduct()
+   {
+    const product : Product = {date: new Date(), description: "Prodotto random", id: 10, 
+      imageUrl: "https://via.placeholder.com/250/FF00FF", isAvailable: true, name: "Prodotto 7", price: 200};
+      
+    this.productsService.addProductToCatalog(product);
+   }
    
-
-  }
   ngOnInit(): void {
     console.log('ProductsPageComponent ngOnInit');
     this.products = this.productsService.getCatalog();
-    this.offerProducts = this.productsService.getOfferProducts();
   }
 
   removeProduct(product: Product): void {
-    this.products.splice(this.products.indexOf(product), 1);
-  }
-
-  removeOfferProduct(product: Product): void {
-    this.offerProducts.splice(this.offerProducts.indexOf(product), 1);
+    this.productsService.removeProduct(product);
   }
 }
