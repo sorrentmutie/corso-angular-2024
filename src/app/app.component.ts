@@ -1,14 +1,31 @@
 import { Component } from '@angular/core';
+import { Person } from './models/person';
 
 @Component({
   selector: 'app-root',
   template: `
-    <h1>Welcome to {{title}}!</h1>
 
-    <router-outlet />
+    <app-menu/>
+
+    <app-header></app-header>
+
+    <main class="container">
+     <app-products-page/>
+    </main>
+    <app-footer></app-footer>
+
   `,
   styles: []
 })
 export class AppComponent {
-  title = 'my-app';
+  title = 'mia applicazione';
+  
+  constructor() {
+     
+  }
+
+  somma(a:number, b:number) {
+     return a + b;
+  }
+
 }
