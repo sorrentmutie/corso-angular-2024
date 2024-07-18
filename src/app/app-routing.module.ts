@@ -8,6 +8,8 @@ import { ContactsPageComponent } from './contacts/contacts-page/contacts-page.co
 import { OffersPageComponent } from './offers/offers-page/offers-page.component';
 import { RandomUserPageComponent } from './random-users/pages/random-user-page/random-user-page.component';
 import { ReqresPageComponent } from './reqres/pages/reqres-page/reqres-page.component';
+import { PhotosPageComponent } from './placeholder/pages/photos-page/photos-page.component';
+import { CustomerComponent } from './northwind/pages/customer/customer.component';
 
 const routes: Routes = [
   { path: 'products', component: ProductsPageComponent },
@@ -16,8 +18,10 @@ const routes: Routes = [
   { path: 'random', component: RandomUserPageComponent},
   { path: 'contacts', component: ContactsPageComponent },
   { path: 'reqres', component: ReqresPageComponent},
+  { path: 'photos', component: PhotosPageComponent},
   { path: 'offers', component: OffersPageComponent},
-  { path: '', redirectTo: '/reqres', pathMatch: 'full' },
+  { path: 'northwind', component: CustomerComponent},
+  { path: '', redirectTo: '/photos', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
 

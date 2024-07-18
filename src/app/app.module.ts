@@ -22,6 +22,10 @@ import { RandomUserCardComponent } from './random-users/component/random-user-ca
 import { LocationPipe } from './random-users/pipes/location.pipe';
 import { ReqresPageComponent } from './reqres/pages/reqres-page/reqres-page.component';
 import { ReqresCardComponent } from './reqres/components/reqres-card/reqres-card.component';
+import { PhotosPageComponent } from './placeholder/pages/photos-page/photos-page.component';
+import { CustomerComponent } from './northwind/pages/customer/customer.component';
+import { OrderListComponent } from './northwind/components/order-list/order-list.component';
+import { UltimoOrdinePipe } from './northwind/pipes/ultimo-ordine.pipe';
 
 
 @NgModule({
@@ -44,7 +48,11 @@ import { ReqresCardComponent } from './reqres/components/reqres-card/reqres-card
     RandomUserCardComponent,
     LocationPipe,
     ReqresPageComponent,
-    ReqresCardComponent
+    ReqresCardComponent,
+    PhotosPageComponent,
+    CustomerComponent,
+    OrderListComponent,
+    UltimoOrdinePipe
   ],
   imports: [
     BrowserModule,
