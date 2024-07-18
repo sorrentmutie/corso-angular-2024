@@ -20,6 +20,8 @@ import { RandomUserPageComponent } from './random-users/pages/random-user-page/r
 import { provideHttpClient } from '@angular/common/http';
 import { RandomUserCardComponent } from './random-users/component/random-user-card/random-user-card.component';
 import { LocationPipe } from './random-users/pipes/location.pipe';
+import { ReqresPageComponent } from './reqres/pages/reqres-page/reqres-page.component';
+import { ReqresCardComponent } from './reqres/components/reqres-card/reqres-card.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { LocationPipe } from './random-users/pipes/location.pipe';
     OffersPageComponent,
     RandomUserPageComponent,
     RandomUserCardComponent,
-    LocationPipe
+    LocationPipe,
+    ReqresPageComponent,
+    ReqresCardComponent
   ],
   imports: [
     BrowserModule,

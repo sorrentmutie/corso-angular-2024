@@ -7,6 +7,7 @@ import { LoginComponent } from './home/login/login.component';
 import { ContactsPageComponent } from './contacts/contacts-page/contacts-page.component';
 import { OffersPageComponent } from './offers/offers-page/offers-page.component';
 import { RandomUserPageComponent } from './random-users/pages/random-user-page/random-user-page.component';
+import { ReqresPageComponent } from './reqres/pages/reqres-page/reqres-page.component';
 
 const routes: Routes = [
   { path: 'products', component: ProductsPageComponent },
@@ -14,8 +15,9 @@ const routes: Routes = [
   { path: 'home', component: LoginComponent},
   { path: 'random', component: RandomUserPageComponent},
   { path: 'contacts', component: ContactsPageComponent },
+  { path: 'reqres', component: ReqresPageComponent},
   { path: 'offers', component: OffersPageComponent},
-  { path: '', redirectTo: '/random', pathMatch: 'full' },
+  { path: '', redirectTo: '/reqres', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
 

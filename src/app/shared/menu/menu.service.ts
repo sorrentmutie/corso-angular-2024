@@ -14,7 +14,8 @@ export class MenuService {
       { label: 'Products', link: '/products' },
       { label: 'Orders', link: '/orders' },
       { label: 'Offers', link: '/offers' },
-      { label: 'Contacts', link: '/contacts'}
+      { label: 'Contacts', link: '/contacts'},
+      { label: 'ReqRes', link: '/reqres'}
     ];
   }
 }
