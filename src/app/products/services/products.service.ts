@@ -34,6 +34,12 @@ export class ProductsService {
     return this.offerProducts;
   }
 
+  getOfferProductsAsync(): Observable<Product[]> {
+    return of(this.offerProducts);
+  }
+
+
+
   getBestOfferProduct(): Product | undefined{
     let minPrice = 1000000;
     let product : Product | undefined = undefined;
