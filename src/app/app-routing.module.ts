@@ -6,14 +6,16 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { LoginComponent } from './home/login/login.component';
 import { ContactsPageComponent } from './contacts/contacts-page/contacts-page.component';
 import { OffersPageComponent } from './offers/offers-page/offers-page.component';
+import { RandomUserPageComponent } from './random-users/pages/random-user-page/random-user-page.component';
 
 const routes: Routes = [
   { path: 'products', component: ProductsPageComponent },
   { path: 'orders', component: OrdersPageComponent },
   { path: 'home', component: LoginComponent},
+  { path: 'random', component: RandomUserPageComponent},
   { path: 'contacts', component: ContactsPageComponent },
   { path: 'offers', component: OffersPageComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/random', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
 

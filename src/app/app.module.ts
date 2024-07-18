@@ -16,6 +16,11 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { LoginComponent } from './home/login/login.component';
 import { ContactsPageComponent } from './contacts/contacts-page/contacts-page.component';
 import { OffersPageComponent } from './offers/offers-page/offers-page.component';
+import { RandomUserPageComponent } from './random-users/pages/random-user-page/random-user-page.component';
+import { provideHttpClient } from '@angular/common/http';
+import { RandomUserCardComponent } from './random-users/component/random-user-card/random-user-card.component';
+import { LocationPipe } from './random-users/pipes/location.pipe';
+
 
 @NgModule({
   declarations: [
@@ -32,13 +37,23 @@ import { OffersPageComponent } from './offers/offers-page/offers-page.component'
     NotFoundComponent,
     LoginComponent,
     ContactsPageComponent,
-    OffersPageComponent
+    OffersPageComponent,
+    RandomUserPageComponent,
+    RandomUserCardComponent,
+    LocationPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+  // provide httpclient module to the app
+
+
+}
+
+
