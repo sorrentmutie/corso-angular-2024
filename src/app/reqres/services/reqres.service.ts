@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Person, ReqresResponse } from '../models/reqres';
+import { Person, ReqResCreatedUser, ReqResCreateUser, ReqresResponse } from '../models/reqres';
 import { map, Observable } from 'rxjs';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { map, Observable } from 'rxjs';
 export class ReqresService{
 
   private url = "https://reqres.in/api/users?page=2";
+  private urlCreate = "https://reqres.in/api/users";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -23,5 +24,9 @@ export class ReqresService{
               .pipe(map(r => r.data));
   }
 
+  createUser(newUser: ReqResCreateUser): Observable<ReqResCreatedUser>
+  {
+    return this.httpClient.post<ReqResCreatedUser>(this.urlCreate, newUser);
+  }
 
 }

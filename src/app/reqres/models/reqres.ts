@@ -20,3 +20,13 @@ export interface Support {
     text: string;
 }
 
+export class ReqResCreateUser {
+    constructor(public name: string, public job: string) {}
+}
+
+export interface ReqResCreatedUser {
+      name: string;
+      job: string;
+      id: string;
+      createdAt: Date;    
+}

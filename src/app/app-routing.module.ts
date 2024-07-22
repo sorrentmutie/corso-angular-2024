@@ -10,6 +10,8 @@ import { RandomUserPageComponent } from './random-users/pages/random-user-page/r
 import { ReqresPageComponent } from './reqres/pages/reqres-page/reqres-page.component';
 import { PhotosPageComponent } from './placeholder/pages/photos-page/photos-page.component';
 import { CustomerComponent } from './northwind/pages/customer/customer.component';
+import { HeroFormComponent } from './heroes/pages/hero-form/hero-form.component';
+import { ReqResFormComponent } from './reqres/pages/req-res-form/req-res-form.component';
 
 const routes: Routes = [
   { path: 'products', component: ProductsPageComponent },
@@ -18,9 +20,10 @@ const routes: Routes = [
   { path: 'random', component: RandomUserPageComponent},
   { path: 'contacts', component: ContactsPageComponent },
   { path: 'reqres', component: ReqresPageComponent},
+  { path: 'reqres-form', component: ReqResFormComponent},   
   { path: 'photos', component: PhotosPageComponent},
-  { path: 'offers', component: OffersPageComponent},
-  { path: 'northwind', component: CustomerComponent},
+  { path: 'hero-form', component: HeroFormComponent},
+  { path: 'offers', component: OffersPageComponent},  { path: 'northwind', component: CustomerComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];

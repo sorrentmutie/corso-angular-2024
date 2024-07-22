@@ -26,6 +26,9 @@ import { PhotosPageComponent } from './placeholder/pages/photos-page/photos-page
 import { CustomerComponent } from './northwind/pages/customer/customer.component';
 import { OrderListComponent } from './northwind/components/order-list/order-list.component';
 import { UltimoOrdinePipe } from './northwind/pipes/ultimo-ordine.pipe';
+import { HeroFormComponent } from './heroes/pages/hero-form/hero-form.component';
+import { FormsModule } from '@angular/forms';
+import { ReqResFormComponent } from './reqres/pages/req-res-form/req-res-form.component';
 
 
 @NgModule({
@@ -52,11 +55,14 @@ import { UltimoOrdinePipe } from './northwind/pipes/ultimo-ordine.pipe';
     PhotosPageComponent,
     CustomerComponent,
     OrderListComponent,
-    UltimoOrdinePipe
+    UltimoOrdinePipe,
+    HeroFormComponent,
+    ReqResFormComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]
