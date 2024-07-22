@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'photos', component: PhotosPageComponent},
   { path: 'offers', component: OffersPageComponent},
   { path: 'northwind', component: CustomerComponent},
-  { path: '', redirectTo: '/photos', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
 
