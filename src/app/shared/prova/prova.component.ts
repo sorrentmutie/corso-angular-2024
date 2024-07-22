@@ -13,8 +13,6 @@ export class ProvaComponent implements OnChanges   {
    specialCounter = 0;
 
    ngOnChanges(changes: SimpleChanges): void {
-     console.log('ProvaComponent ngOnChanges');
-     console.log(changes);
      const currentValue = changes['mycounter'].currentValue as number;
      if(currentValue > 10) {
        this.specialCounter = 0;

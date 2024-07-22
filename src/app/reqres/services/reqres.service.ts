@@ -8,7 +8,7 @@ import { map, Observable } from 'rxjs';
 })
 export class ReqresService{
 
-  private url = "https://reqres.in/api/users?page=2";
+  private url = "https://reqres.in/api/users?page=2&delay=9";
   private urlCreate = "https://reqres.in/api/users";
 
   constructor(private httpClient: HttpClient) { }

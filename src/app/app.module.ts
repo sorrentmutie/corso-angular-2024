@@ -17,7 +17,7 @@ import { LoginComponent } from './home/login/login.component';
 import { ContactsPageComponent } from './contacts/contacts-page/contacts-page.component';
 import { OffersPageComponent } from './offers/offers-page/offers-page.component';
 import { RandomUserPageComponent } from './random-users/pages/random-user-page/random-user-page.component';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { RandomUserCardComponent } from './random-users/component/random-user-card/random-user-card.component';
 import { LocationPipe } from './random-users/pipes/location.pipe';
 import { ReqresPageComponent } from './reqres/pages/reqres-page/reqres-page.component';
@@ -29,6 +29,11 @@ import { UltimoOrdinePipe } from './northwind/pipes/ultimo-ordine.pipe';
 import { HeroFormComponent } from './heroes/pages/hero-form/hero-form.component';
 import { FormsModule } from '@angular/forms';
 import { ReqResFormComponent } from './reqres/pages/req-res-form/req-res-form.component';
+import { first } from 'rxjs';
+import { firstInterceptor } from './shared/interceptors/first.interceptor';
+import { secondInterceptor } from './shared/interceptors/second.interceptor';
+import { LoaderComponent } from './shared/loader/loader.component';
+import { NotificationComponent } from './shared/notifications/notification/notification.component';
 
 
 @NgModule({
@@ -57,14 +62,17 @@ import { ReqResFormComponent } from './reqres/pages/req-res-form/req-res-form.co
     OrderListComponent,
     UltimoOrdinePipe,
     HeroFormComponent,
-    ReqResFormComponent
+    ReqResFormComponent,
+    LoaderComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(withInterceptors(
+    [firstInterceptor, secondInterceptor ]))],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

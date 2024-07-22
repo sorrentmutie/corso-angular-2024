@@ -12,18 +12,22 @@ import { PhotosPageComponent } from './placeholder/pages/photos-page/photos-page
 import { CustomerComponent } from './northwind/pages/customer/customer.component';
 import { HeroFormComponent } from './heroes/pages/hero-form/hero-form.component';
 import { ReqResFormComponent } from './reqres/pages/req-res-form/req-res-form.component';
+import { AuthGuardService } from './shared/guards/auth-guard';
+import { AdminGuardService } from './shared/guards/admin-.guard';
+
 
 const routes: Routes = [
-  { path: 'products', component: ProductsPageComponent },
-  { path: 'orders', component: OrdersPageComponent },
+  { path: 'products', component: ProductsPageComponent, canActivate: [AuthGuardService] },
+  { path: 'orders', component: OrdersPageComponent, canActivate: [AuthGuardService] },
   { path: 'home', component: LoginComponent},
-  { path: 'random', component: RandomUserPageComponent},
-  { path: 'contacts', component: ContactsPageComponent },
-  { path: 'reqres', component: ReqresPageComponent},
-  { path: 'reqres-form', component: ReqResFormComponent},   
-  { path: 'photos', component: PhotosPageComponent},
-  { path: 'hero-form', component: HeroFormComponent},
-  { path: 'offers', component: OffersPageComponent},  { path: 'northwind', component: CustomerComponent},
+  { path: 'random', component: RandomUserPageComponent, canActivate: [AdminGuardService] },
+  { path: 'contacts', component: ContactsPageComponent, canActivate: [AuthGuardService] },
+  { path: 'reqres', component: ReqresPageComponent, canActivate: [AuthGuardService]},
+  { path: 'reqres-form', component: ReqResFormComponent, canActivate: [AuthGuardService]},   
+  { path: 'photos', component: PhotosPageComponent, canActivate: [AuthGuardService]},
+  { path: 'hero-form', component: HeroFormComponent , canActivate: [AuthGuardService]},
+  { path: 'offers', component: OffersPageComponent, canActivate: [AuthGuardService]},  
+  { path: 'northwind', component: CustomerComponent, canActivate: [AuthGuardService]},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];

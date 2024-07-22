@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
-import { ProductsService } from '../../products/services/products.service';
-import { filter, map, of } from 'rxjs';
+import { Component, signal } from '@angular/core';
+import { DataService } from '../services/data.service';
+
 
 @Component({
   selector: 'app-footer',
   template: `
     <div class="container-fluid" >
-      footer works! {{productsService.getCatalog().length}}
+      footer works! {{dataService.countSignal()}}
+      <button (click)="changeCount()">Incrementa</button>
     </div>
   `,
   styles: `
@@ -18,26 +19,14 @@ import { filter, map, of } from 'rxjs';
   `
 })
 export class FooterComponent {
-  numberOfProducts = 0;
-  constructor(public productsService: ProductsService) {
-    console.log('FooterComponent constructor');
-    //this.numberOfProducts = productsService.getCatalog().length; 
 
-    const myObservable = of(1,2,3,4,5,6,7,8,9,10);
+    
+    constructor(public dataService: DataService) {
 
-    const myObserver = {
-     next: (x:number) => console.log('Observer got a next value: ' + x),
-     error: (err:Error) => console.error('Observer got an error: ' + err.message),
-     complete: () => console.log('Observer got a complete notification'),
-    };
-
-
-    myObservable.
-    pipe(
-      map(x => x * 3),
-      filter(x => x % 2 === 0)
-    ).
-    subscribe(myObserver);
+    }
+  
+    changeCount() {
+      this.dataService.setCount(this.dataService.countSignal() + 1);
+    }
 
   }
-}

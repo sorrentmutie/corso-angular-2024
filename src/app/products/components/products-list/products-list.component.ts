@@ -54,11 +54,8 @@ export class ProductsListComponent implements OnChanges {
     @Output() deleteProduct = new EventEmitter<Product>();
 
     constructor() {
-      console.log('ProductsListComponent constructor');
     }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('ProductsListComponent ngOnChanges');
-    console.log(changes);
   }
 
     delete(product: Product) {

@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <app-menu/>
-    
+    <app-loader/>
+    <app-notification/>
     <main class="container">
       <router-outlet></router-outlet>
     </main>
@@ -16,7 +17,7 @@ export class AppComponent {
   title = 'mia applicazione';
   
   constructor() {
-     console.log('AppComponent constructor');
+   
   }
 
   somma(a:number, b:number) {

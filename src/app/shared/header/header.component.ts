@@ -31,12 +31,10 @@ export class HeaderComponent implements OnDestroy {
   bestProduct : Product | undefined = undefined;
   
   constructor(private productsService: ProductsService) { 
-    console.log('HeaderComponent constructor');
     this.numberOfProductsInSpecialOffer = productsService.getOfferProducts().length;
     this.bestProduct = productsService.getBestOfferProduct();
   }
 
   ngOnDestroy(): void {
-    console.log('destroy di header');
   }
 }

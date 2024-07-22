@@ -14,7 +14,6 @@ export class ProductsService {
   constructor(private discountService: DiscountService) { 
     this.loadProducts();
     this.loadOfferProducts(); 
-    console.log('ProductsService constructor');
   }
 
   addProductToCatalog(product: Product): void {

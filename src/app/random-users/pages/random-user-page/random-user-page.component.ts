@@ -6,7 +6,6 @@ import { Result } from '../../models/random-user';
 @Component({
   selector: 'app-random-user-page',
   template: `
-
     @if( randomUsers$ | async; as users) {
       @for(user of users; track user){
         <app-random-user-card [user]="user"/>

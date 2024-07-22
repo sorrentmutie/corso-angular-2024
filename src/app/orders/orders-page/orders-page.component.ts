@@ -16,7 +16,7 @@ export class OrdersPageComponent {
     constructor(private router: Router) { }
 
     navigate(): void {
-        console.log('Naviga verso prodotti');
+       
         this.router.navigate(['/products']);
     }
 

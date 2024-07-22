@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 
   <button style="margin-top:10px" class="btn btn-success" (click)="addProduct()"> Aggiungi un prodotto </button>
 
-   // subscribe to products$ and use the async pipe
+
     <section *ngIf="products$ | async as products">
       <article>
         Numero totale di prodotti: {{products.length}}
@@ -35,7 +35,6 @@ export class ProductsPageComponent implements OnInit {
    }
    
   ngOnInit(): void {
-    console.log('ProductsPageComponent ngOnInit');
     this.products$ =  this.productsService.getCatalogAsync();
 
     // const z = this.productsService.getCatalogAsync().subscribe(ps => {});

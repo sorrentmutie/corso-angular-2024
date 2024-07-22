@@ -61,7 +61,6 @@ export class HeroFormComponent {
    }
 
    onSubmit() {
-    console.log(this.hero);
   } 
 
 }

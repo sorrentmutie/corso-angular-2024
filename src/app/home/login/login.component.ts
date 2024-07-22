@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { LoginRequest } from '../models/login';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -40,12 +41,17 @@ import { LoginRequest } from '../models/login';
 })
 
 export class LoginComponent {
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService,
+              private router: Router
+  ) {}
 
-  public loginRequest = { email: "", password:"" }
+  public loginRequest = { email: "eve.holt@reqres.in", password:"cityslicka" }
 
   login()
   {
-    this.loginService.login(this.loginRequest).subscribe(x => this.loginService.setToken(x.token));
+    this.loginService.login(this.loginRequest)
+      .subscribe(x => {
+        this.router.navigate(['/products']);
+       });
   }
 }
