@@ -7,7 +7,7 @@ import { DataService } from '../services/data.service';
 })
 export class MenuService {
 
-  constructor() { }
+  constructor() { console.log('sono nel costruttore'); }
 
   getMenuItems(): MenuItem[] {
     return [

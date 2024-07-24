@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { RandomUserResponse, Result } from '../models/random-user';
 import { map, Observable } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,15 @@ import { map, Observable } from 'rxjs';
 export class RandomUsersService {
 
   private baseUrl = 'https://randomuser.me/api/';
-  constructor(private httpClient: HttpClient) { }
 
+  private  httpClient = inject(HttpClient);
+  private random$ = this.httpClient.get<RandomUserResponse>(this.baseUrl)
+                        .pipe(
+                          map(response => response.results)
+                        );
+  random = toSignal(this.random$, {initialValue: [] as Result[]});
 
+  
   getRandomUser(): Observable<RandomUserResponse>{
     return this.httpClient
        .get<RandomUserResponse>(this.baseUrl);

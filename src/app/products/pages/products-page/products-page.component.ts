@@ -7,9 +7,8 @@ import { Observable } from 'rxjs';
   selector: 'app-products-page',
   template: `
 
+
   <button style="margin-top:10px" class="btn btn-success" (click)="addProduct()"> Aggiungi un prodotto </button>
-
-
     <section *ngIf="products$ | async as products">
       <article>
         Numero totale di prodotti: {{products.length}}

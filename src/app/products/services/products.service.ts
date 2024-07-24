@@ -11,11 +11,15 @@ export class ProductsService {
 
   private products: Product[] = [];
   private offerProducts: Product[] = [];
+  randomNumber = 0;
 
   constructor(private discountService: DiscountService) { 
     this.loadProducts();
     this.loadOfferProducts(); 
     this.specialOfferSignal.set(this.offerProducts.length);
+    console.log('costruttore di product service');
+    this.randomNumber = Math.random();
+    console.log('randomNumber ' + this.randomNumber);
   }
 
   addProductToCatalog(product: Product): void {

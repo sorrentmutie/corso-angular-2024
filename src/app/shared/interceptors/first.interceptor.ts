@@ -12,6 +12,9 @@ export const firstInterceptor: HttpInterceptorFn = (req, next) => {
   const notificatinService = inject(NotificationService);
   dataService.setShowLoader(true);
   notificatinService.showNotification("");
+
+  console.log(req.url);
+
   return next(req).pipe(
     tap(x => {  
       if(x instanceof HttpResponse) {

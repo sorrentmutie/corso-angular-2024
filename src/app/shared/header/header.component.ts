@@ -5,6 +5,7 @@ import { LoginService } from '../../home/services/login.service';
 import { ReqresService } from '../../reqres/services/reqres.service';
 import { Person } from '../../models/person';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { RandomUsersService } from '../../random-users/services/random-users.service';
 
 @Component({
   selector: 'app-header',
@@ -21,11 +22,9 @@ import { toSignal } from '@angular/core/rxjs-interop';
           Ci sono {{reqresService.users().length}} persone
         </div>
 
-        <div class="alert alert-success" role="alert">
-          @if(bestProduct)
-            {
-              {{bestProduct.name}} {{bestProduct.price}}
-            }          
+        <div class="alert alert-primary" role="alert">
+          Persona: {{(reandomService.random())[0].name.first}}
+                   {{(reandomService.random())[0].name.last}}
         </div>
       }
       @else 
@@ -42,7 +41,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
 export class HeaderComponent implements OnDestroy {
   bestProduct : Product | undefined = undefined;
 
-  constructor(public productsService: ProductsService, public loginService: LoginService, public reqresService: ReqresService) {     
+  constructor(public productsService: ProductsService, public loginService: LoginService, 
+          public reqresService: ReqresService, public reandomService: RandomUsersService) {     
     this.bestProduct = productsService.getBestOfferProduct();
   }
 

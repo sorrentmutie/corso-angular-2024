@@ -6,6 +6,7 @@ import { Person, ReqresResponse } from '../../models/reqres';
 @Component({
   selector: 'app-reqres-page',
   template: `
+    <app-loader/>
   @if( reqres$ | async; as reqresUsers) {
     <div>
     @for(user of reqresUsers; track user)

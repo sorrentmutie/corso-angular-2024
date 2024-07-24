@@ -47,7 +47,8 @@ import { ProductsService } from '../../products/services/products.service';
   </div>
 </nav>
   `,
-  styles: ``
+  styles: ``,
+  providers: [MenuService]
 })
 export class MenuComponent implements OnInit  {
 
