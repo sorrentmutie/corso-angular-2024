@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Signal, signal, WritableSignal } from '@angular/core';
+import { inject, Injectable, Signal, signal, WritableSignal } from '@angular/core';
 import { Person, ReqResCreatedUser, ReqResCreateUser, ReqresResponse } from '../models/reqres';
 import { map, Observable, of } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -9,14 +9,16 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class ReqresService{
 
-  public peopleSignal: Signal<Person[] | undefined> = signal(undefined);
+  //public peopleSignal: Signal<Person[] | undefined> = signal(undefined);
   private url = "https://reqres.in/api/users?page=2";
   private urlCreate = "https://reqres.in/api/users";
   
-  constructor(private httpClient: HttpClient) 
-  { 
-    
-  }
+
+  
+  private  httpClient = inject(HttpClient);
+  private users$ = this.httpClient.get<ReqresResponse>(this.url)
+      .pipe(map(r => r.data));
+  users = toSignal(this.users$, {initialValue: [] as Person[]});
 
   getData() : Observable<ReqresResponse>
   {
