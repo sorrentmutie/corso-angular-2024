@@ -15,7 +15,7 @@ export class MenuService {
       { label: 'Products', link: '/products' },
       { label: 'Orders', link: '/orders' },
       { label: 'Offers', link: '/offers' },
-      { label: 'Contacts', link: '/contacts'},
+      { label: 'Photos', link: '/photos'},
       { label: 'Random', link: '/random'},
       { label: 'ReqRes', link: '/reqres'},
       { label: 'Northwind', link: '/northwind'}

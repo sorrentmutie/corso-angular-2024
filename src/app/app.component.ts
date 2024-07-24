@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <app-menu/>
+    <app-header></app-header>
     <app-loader/>
     <app-notification/>
     <main class="container">
