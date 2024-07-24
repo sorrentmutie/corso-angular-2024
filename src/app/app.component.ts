@@ -3,14 +3,18 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <app-menu/>
+  <div class="mycontainer">
+    <div class="item1">
+      <app-menu/>
+    </div>
     <app-header></app-header>
-    <app-loader/>
-    <app-notification/>
-    <main class="container">
+    <main class="item3 container" style="overflow-y: scroll">
       <router-outlet></router-outlet>
     </main>
     <app-footer></app-footer>
+  </div>
+  <app-loader/>
+  <app-notification/>
   `,
   styles: []
 })

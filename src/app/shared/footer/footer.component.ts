@@ -1,28 +1,33 @@
 import { Component, signal } from '@angular/core';
 import { DataService } from '../services/data.service';
+import { ProductsService } from '../../products/services/products.service';
 
 
 @Component({
   selector: 'app-footer',
   template: `
-    <div class="container-fluid" >
+    <div class="item4" >
       footer works! {{dataService.countSignal()}}
       <button (click)="changeCount()">Incrementa</button>
     </div>
   `,
   styles: `
-    .container-fluid {
-      background-color: black;
-      color: white;
-      padding: 10px;
-    }
+    
   `
 })
 export class FooterComponent {
 
     
-    constructor(public dataService: DataService) {
-
+    constructor(public dataService: DataService, public productService: ProductsService) {
+      setInterval(() => {
+        this.productService.addOfferProduct(
+          { id: 4, name: 'Prodotto 4',  
+          price:  400, isAvailable: true,
+          description: "Descrizione prodotto 4",
+          imageUrl: "https://via.placeholder.com/250/FFFF00",
+          date: new Date()
+        })
+      }, 1000);
     }
   
     changeCount() {

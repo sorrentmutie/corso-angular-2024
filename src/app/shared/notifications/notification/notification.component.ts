@@ -8,9 +8,7 @@ import { NotificationService } from '../notification.service';
         <div class="alert alert-danger">
         {{notificationService.notifications()}}
        </div>
-       }
-
-        
+       }       
   `,
   styles: ``
 })

@@ -10,3 +10,40 @@ h3 {
 .ng-invalid:not(form) {
   border-left: 5px solid red;
 }
+
+.mycontainer {
+  display: grid;
+  grid-template-rows: auto auto 68vh auto;
+  grid-template-areas: 
+    "menu"
+    "header"
+    "main"
+    "footer";
+}
+
+.item1 { grid-area: menu; 
+  padding: 10px;
+  text-align: center;
+}
+
+.item2 {
+  grid-area: header;
+  padding: 10px;
+  text-align: center;
+}
+
+.item3 {
+  grid-area: main;
+  background-color: aqua;
+  padding: 10px;
+  text-align: center;
+}
+
+.item4 {
+  grid-area: footer;
+  background-color: green;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+

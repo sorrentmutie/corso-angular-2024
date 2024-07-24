@@ -1,27 +1,32 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Signal, signal, WritableSignal } from '@angular/core';
 import { Person, ReqResCreatedUser, ReqResCreateUser, ReqresResponse } from '../models/reqres';
-import { map, Observable } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReqresService{
 
-  private url = "https://reqres.in/api/users?page=2&delay=9";
+  public peopleSignal: Signal<Person[] | undefined> = signal(undefined);
+  private url = "https://reqres.in/api/users?page=2";
   private urlCreate = "https://reqres.in/api/users";
-
-  constructor(private httpClient: HttpClient) { }
+  
+  constructor(private httpClient: HttpClient) 
+  { 
+    
+  }
 
   getData() : Observable<ReqresResponse>
   {
     return this.httpClient.get<ReqresResponse>(this.url);
   }
 
-  getPeople() : Observable<Person[]>
+  getPeople() : Observable<Person[] | undefined>
   {
     return this.httpClient.get<ReqresResponse>(this.url)
-              .pipe(map(r => r.data));
+          .pipe(map(r => r.data));
   }
 
   createUser(newUser: ReqResCreateUser): Observable<ReqResCreatedUser>

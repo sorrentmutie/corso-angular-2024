@@ -4,6 +4,7 @@ import { MenuItem } from './menu-item';
 import { LoginService } from '../../home/services/login.service';
 import { DataService } from '../services/data.service';
 import { Router } from '@angular/router';
+import { ProductsService } from '../../products/services/products.service';
 @Component({
   selector: 'app-menu',
   template: `
@@ -28,6 +29,13 @@ import { Router } from '@angular/router';
         <img style="width: 50px" src="{{loginService.userSignal()?.avatar}}">
         <span style="color:white"> Benvenuto, {{loginService.userSignal()?.first_name}} </span>
         <button (click)="logout()" class="btn btn-secondary"> Logout </button>
+        <button type="button" class="btn btn-primary position-relative">
+          Offers
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              {{productService.specialOfferSignal()}}  
+            <span class="visually-hidden">Products</span>
+          </span>
+        </button>
       }
       @else 
       {
@@ -48,6 +56,7 @@ export class MenuComponent implements OnInit  {
   constructor(private menuService: MenuService, 
               public loginService: LoginService,
               public dataService: DataService,
+              public productService: ProductsService,
               private router: Router) { 
     
   }

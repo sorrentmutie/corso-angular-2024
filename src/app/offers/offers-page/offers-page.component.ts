@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   template: `
     <section *ngIf="offerProducts$ | async as offerProducts">
        @if(offerProducts.length > 0) {
-         <app-products-list [products]="offerProducts"/>
+         <app-products-list [products]="offerProducts" (deleteProduct)="removeOfferProduct($event)"/>
        }
        @else {
         <article>
@@ -30,6 +30,6 @@ export class OffersPageComponent implements OnInit{
     }
 
     removeOfferProduct(product: Product): void {
-      this.productsService.removeProduct(product);
+      this.productsService.removeOfferProduct(product);
     }
 }

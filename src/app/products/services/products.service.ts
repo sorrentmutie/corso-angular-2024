@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 import { Product } from '../models/product';
 import { DiscountService } from './discount.service';
 import { Observable, of } from 'rxjs';
@@ -7,6 +7,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductsService {
+  public specialOfferSignal: WritableSignal<number> = signal(0);
 
   private products: Product[] = [];
   private offerProducts: Product[] = [];
@@ -14,6 +15,7 @@ export class ProductsService {
   constructor(private discountService: DiscountService) { 
     this.loadProducts();
     this.loadOfferProducts(); 
+    this.specialOfferSignal.set(this.offerProducts.length);
   }
 
   addProductToCatalog(product: Product): void {
@@ -60,7 +62,17 @@ export class ProductsService {
   }
 
 
+  removeOfferProduct(product: Product) : void
+  {
+    this.offerProducts.splice(this.offerProducts.indexOf(product), 1);
+    this.specialOfferSignal.set(this.offerProducts.length);
+  }
 
+  addOfferProduct(product: Product) : void
+  {
+    this.offerProducts.push(product);
+    this.specialOfferSignal.set(this.offerProducts.length);
+  }
 
   loadOfferProducts() {  
     this.offerProducts.push(
